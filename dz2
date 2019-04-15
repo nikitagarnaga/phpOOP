@@ -1,0 +1,94 @@
+<?php
+
+interface Sailboat {
+	public function theSailboat ();
+}
+
+interface Liner {
+	public function theLiner ();
+}
+
+interface Aerocarrier {
+	public function theAerocarrier ();
+}
+
+interface Cruiser {
+	public function theCruiser ();
+}
+
+
+
+class Boat implements Sailboat, Liner, Aerocarrier, Cruiser {
+	
+	public function theSailboat (){
+		echo "sailing on sailboat, ";
+	}
+
+	public function theLiner (){
+		echo "sailing on lainer, ";
+	}
+
+	public function theAerocarrier (){
+		echo "sailing on aerocarrier, ";
+	}
+
+	public function theCruiser (){
+		echo "sailing on cruiser, ";
+	}
+}
+
+
+class WhichbBoat extends Boat{
+	
+	protected $load;
+
+	public function loadShip (){
+
+
+		if (($this->load <= 50) && ($this->load > 0)) {
+			echo " ZzZ..." . $this->theSailboat();
+		}
+		elseif (($this->load >= 51) && ($this->load <= 100)) {
+			echo " good luck captain!" . $this->theLiner();
+		}
+		elseif (($this->load >= 101) && ($this->load <= 200)) {
+			echo " good luck admiral!" . $this->theAerocarrier();
+		}
+		elseif (($this->load >= 201) && ($this->load <= 300)) {
+			echo " you are the captain of the cruiser" . $this->theCruiser();
+		}
+		else{
+			echo "are you walk?";
+		}
+	}
+
+	public function loadMass ($load){
+
+		$this->load = $load;
+		return $this;
+
+	}
+
+}
+
+
+class Thrust {
+	
+	public $thrust;
+
+	public function choise ($thrust){
+		echo $this->thrust = $thrust . " your engine, ";
+		return $this;
+	}
+
+}
+
+
+
+
+
+
+$boat = new WhichbBoat();
+$thrust = new Thrust();
+$thrust->choise('sail');
+$boat->loadMass(133)->loadShip();
